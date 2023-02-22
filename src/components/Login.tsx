@@ -4,7 +4,7 @@ import './css/Elements.css';
 interface Elem{
 }
 
-const New = ({}:Elem) =>{
+const Login = ({}:Elem) =>{
     return(
         <div id='bodyLogin'>
            <div id='formLogin'>
@@ -19,4 +19,4 @@ const New = ({}:Elem) =>{
     )
 }
 
-export default New
+export default Login

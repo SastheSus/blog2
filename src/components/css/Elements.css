@@ -12,6 +12,46 @@ ul {
   width: 25%;
   }
 
+  #bodyLogin{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #formLogin{
+    width: 48%;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    background-color: rgb(204, 199, 196);
+    border: solid rgb(125,127,126) 2px;
+    border-radius: 20px;
+  }
+
+  #username{
+    height: 5vh;
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+    font-size: 150%;
+    padding-left: 10px;
+    border-radius: 20px;
+  }
+
+  #password{
+    height: 5vh;
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+    font-size: 150%;
+    padding-left: 10px;
+    border-radius: 20px;
+  }
+
   #logli{
     display: inline-flex;
     align-items: baseline;
@@ -20,14 +60,6 @@ ul {
   #campi{
     display: flex;
     flex-wrap: wrap;
-  }
-
-  #username{
-    display: none;
-  }
-
-  #password{
-    display: none;
   }
 
   #login{
@@ -43,6 +75,7 @@ ul {
     cursor: pointer;
     transition: border-color 0.25s;
   }
+  
   #login:hover {
     border-color: black;
   }
