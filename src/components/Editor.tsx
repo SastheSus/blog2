@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
 import './css/Elements.css';
 
-import img from "./img/abrams.jpeg";
 
 interface Elem{
 }
 
 const Editor = () =>{
+    let img = "";
 
+    const image = (event: React.ChangeEvent<HTMLInputElement>) =>{
+        const content = document.getElementById('editorInputImg') as HTMLInputElement | null;
+        const i = document.getElementById('editorImgArt') as HTMLImageElement;
+        if(content != null){
+            console.log("/"+content.value+"/")
+            i.src = "'"+content.value+"'";
+        }
+        else{
+            console.log('pino')
+        }
+    }
     const invia = (event: React.MouseEvent<HTMLElement>) =>{
         const title = document.getElementById('editorTitolo');
         const img = document.getElementById('editorImgArt');
@@ -36,10 +47,10 @@ const Editor = () =>{
                 </div>
                 <textarea id='editorDescArt'></textarea>
                 <div id='editorImmagine'>
-                    <img id='editorImgArt' src="" alt="sample" />
+                    <img id='editorImgArt' src={img} alt="sample" />
                 </div>
                 <div id='editorInputs'>
-                    <input id="editorInputImg" type="file" accept=".png, .jpg, .jpeg" />
+                    <input id="editorInputImg" type="file" accept=".png, .jpg, .jpeg" onChange={image}/>
                     <input type="button" onClick={invia}/>
                 </div>
             </article>
