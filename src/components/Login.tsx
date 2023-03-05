@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import './css/Elements.css';
-import { RowDataPacket } from "mysql2";
-import { OkPacket } from "mysql2";
+import { XMLHttpRequest } from 'xmlhttprequest-ts';
 
-// get the client
-import mysql from 'mysql2';
 
-// create the connection to database
 
 
 
@@ -17,42 +13,33 @@ interface Elem{
 }
 
 const Login = ({}:Elem) =>{
-    /*
-    try{
-        
-        const mysql = require('mysql2');
-        const connection = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            database: 'articoli'
-          });
-          
-          
-          // with placeholder
-          connection.query(
-            'SELECT * FROM `table` WHERE `id` = ?',
-            [1],
-            function(err, results) {
-              console.log(results);
-            }
-          );
-    }
-    catch(error){
-       console.log('Napoli'+error) 
-    }*/
+    
+    
+            
+    
 
     const accedi = () =>{
-        
+      var xhr = new XMLHttpRequest();
+      var email = document.getElementById('username') as HTMLInputElement | null;
+      
+      xhr.onload = () => {
+        console.log('pino'+xhr.responseText)
+      }
+      xhr.open('GET', './uploader.php?email='+email?.value);
+      xhr.send();
+      xhr.onerror = function() { // only triggers if the request couldn't be made at all
+        alert(`Network Error`);
+      };
     }
 
     return(
         <div id='bodyLogin'>
            <div id='formLogin'>
                 <article>
-                    <h3>{/*titolo*/}Login</h3>
+                    <h3>{/*titolo*/}Logino</h3>
                     <input type="text" id='username'></input>
                     <input type="password" id='password'></input>
-                    <input type="button" id='buttonLogin'></input>
+                    <input type="button" id='buttonLogin' onClick={accedi}></input>
                 </article>
             </div> 
         </div>

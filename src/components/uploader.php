@@ -1,26 +1,30 @@
 <?php
-
+/*
 $title = $_REQUEST["title"];
 $img = $_REQUEST["img"];
-$content = $_REQUEST["content"];
+$content = $_REQUEST["content"];*/
+$email = $_REQUEST["email"];
 
-$hint = "";
-
-// lookup all hints from array if $q is different from ""
-if ($q !== "") {
-  $q = strtolower($q);
-  $len=strlen($q);
-  foreach($a as $name) {
-    if (stristr($q, substr($name, 0, $len))) {
-      if ($hint === "") {
-        $hint = $name;
-      } else {
-        $hint .= ", $name";
-      }
-    }
+try{
+  $pdo = new PDO("mysql:host=localhost; dbname=blog", "root", "");
+  
+  //echo "/".$d."/".strlen($d)."/".$h."/".strlen($h)."/\n";
+  $text = "SELECT email FROM utenti WHERE email = ?";
+  
+  $query= $pdo->prepare($text);
+  $query->execute([$email]);
+  
+  while ($row = $query->fetch()) {
+      $hint.=$row['email'];
   }
-}
-
-// Output "no suggestion" if no hint was found or output correct values
-echo $hint === "" ? "no suggestion" : $hint;
+  }
+  catch (PDOException $e){
+      echo "Impossibile connettersi al server di database. ".$e;
+      exit();
+  }
+  //se più di un prof a disposizione
+  //cercare l'idProf del select in profhaclasse
+  //cercare l'idProf del select in profhamateria
+  
+  echo $hint === "" ? "no suggestion" : $hint;
 ?>
