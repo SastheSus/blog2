@@ -21,14 +21,15 @@ const Login = ({}:Elem) =>{
       e.preventDefault()
       var xhr = new XMLHttpRequest();
       var email = document.getElementById('username') as HTMLInputElement | null;
+      var password = document.getElementById('password') as HTMLInputElement | null;
       
       
-      xhr.open('GET', 'http://localhost:80/blog/uploader.php?email='+email?.value, true);
+      xhr.open('GET', 'http://localhost:80/blog/uploader.php?email='+email?.value+'&password='+password?.value, true);
+      xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:80/blog/uploader.php")
       xhr.send();
       xhr.onload = () => {
-        console.log('pino'+xhr.response)
+        console.log(xhr.response)
       }
-      xhr.setRequestHeader("Access-Control-Allow-Origin", "true")
       xhr.onerror = function() { // only triggers if the request couldn't be made at all
         alert(`Network Error`);
       };
