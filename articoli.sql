@@ -5,3 +5,9 @@ CREATE TABLE articoli (
   Giorno datetime,
   Logo varchar(255)
 );
+
+CREATE TABLE utenti (
+  email varchar(50),
+  username varchar(50),
+  password varchar (50)
+);
